@@ -1,0 +1,6 @@
+export const SET_BOOKS = 'SET-BOOKS'
+export const SET_IS_LOADING = 'SET-IS-LOADING'
+export const ADD_BOOK_TO_CART = 'ADD-BOOK-TO-CART'
+export const REMOVE_BOOK_FROM_CART = 'REMOVE-BOOK-FROM-CART'
+export const SET_FILTER = 'SET-FILTER'
+export const SET_SEARCH = 'SET-SEARCH'
