@@ -5,11 +5,14 @@ import books from './reducers/books'
 import cart from './reducers/cart'
 import filter from './reducers/filter'
 
+export type RootState = ReturnType<typeof rootReducer>
+
 const rootReducer = combineReducers({
   books,
   cart,
   filter
 })
+
 
 const composeEnhancers = process.env.NODE_ENV !== 'production' &&
   typeof window === 'object' &&

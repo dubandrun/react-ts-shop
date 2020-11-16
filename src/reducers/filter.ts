@@ -3,12 +3,19 @@ import {
   SET_SEARCH 
 } from '../constants'
 
-const initialState = {
+import { FilterActionTypes } from '../types'
+
+type stateItems = {
+  search: string,
+  filteredBy: string
+}
+
+const initialState: stateItems = {
   search: '',
   filteredBy: 'all'
 }
 
-const filter = (state = initialState, action) => {
+const filter = (state = initialState, action: FilterActionTypes): stateItems => {
 
   switch(action.type) {
     
