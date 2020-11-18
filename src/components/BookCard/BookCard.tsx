@@ -1,7 +1,9 @@
 import React from 'react'
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
 
-const BookCard = book => {
+import { IBookCard } from '../../types'
+
+const BookCard = (book: IBookCard)  => {
   const {
     title,
     author,
@@ -10,7 +12,7 @@ const BookCard = book => {
     rating,
     addBookToCart,
     addedCount
-  } = book
+  } = book 
   return (
     <Card>
       <Image src={image} wrapped ui={false} />

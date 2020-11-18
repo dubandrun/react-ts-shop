@@ -48,7 +48,6 @@ export type CartActionTypes = IAddBookToCart | IRemoveBookFromCart
 export type FilterActionTypes = ISetFilter | ISetSearch
 
 // AppContainer types
-
 export interface IBooksAndFilter {
   books: {
     items: Array<IAddBook>,
@@ -59,12 +58,10 @@ export interface IBooksAndFilter {
     search: string
   }
 }
-
 export interface IMapStateToPropsAppContainer {
   books: Array<IAddBook>,
   isLoading: boolean
 }
-
 export interface IAppContainer {
   setBooks: Function,
   addBookToCart: Function, 
@@ -72,41 +69,60 @@ export interface IAppContainer {
   isLoading: boolean,
   books: Array<IAddBook>
 }
+
 // App types
- 
+export interface IApp {
+  books: Array<IAddBook>,
+  isLoading: boolean
+}
+
 // BookCardContainer types
 export interface IMapStateToPropsBookCardContainer {
   addedCount: number
 }
-
 export interface IBookCardState {
   cart: {
     items: Array<IAddBook>
   }
 }
+
 // Book types
- 
+export interface IBookCard {
+  title: string,
+  author: string,
+  image: string,
+  price: number,
+  rating: number,
+  addBookToCart: Function,
+  addedCount: number
+}
+
 // FiltersContainer types
 export interface IMapStateToPropsFilterContainer {
   activeItem: string,
   inputValue: string
 }
-
 export interface IFilter {
   filter: {
     filteredBy: string,
     search: string
   }
 }
-
 export interface IFilterContainer {
   setFilter: Function,
   setSearch: Function,
   activeItem: string,
   inputValue: string,
 }
+
 // Filters types
- 
+ export interface IFilters {
+  activeItem: string, 
+  inputValue: string, 
+  handleItemClick: any, 
+  onInputChange: any 
+ }
+
 // MenuContainer types
 export type Cart = {
   cart: {
@@ -118,4 +134,17 @@ export interface IMapStateToPropsMenuContainer {
   totalBooks: number,
   items: Array<IAddBook>,
 }
+
 // Menu types
+export interface IMenuCart {
+  title: string,
+  id: number, 
+  image: string,
+  removeBookFromCart: Function 
+}
+export interface IMenuHeader {
+  totalPrice: number, 
+  totalBooks: number, 
+  items: Array<IAddBook>, 
+  removeBookFromCart:  Function
+}

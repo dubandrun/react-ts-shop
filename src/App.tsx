@@ -5,7 +5,9 @@ import BookCardContainer from './containers/BookCardContainer/BookCardContainer'
 import MenuContainer from './containers/MenuContainer/MenuContainer'
 import FiltersContainer from './containers/FiltersContainer/FiltersContainer'
 
-const App = ({ books, isLoading }) => (
+import { IApp } from './types'
+
+const App = ({ books, isLoading }: IApp) => (
   <Container >
     <MenuContainer />
     <FiltersContainer/>

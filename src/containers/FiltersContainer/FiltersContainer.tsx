@@ -11,12 +11,12 @@ import {
 
 class FiltersContainer extends Component<IFilterContainer> {
 
-  handleItemClick = (e: React.MouseEvent<HTMLButtonElement>, { name }: any) => {
+  handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, { name }: any): void => {
     const { setFilter } = this.props
     setFilter(name)
   }
 
-  onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { setSearch } = this.props
     setSearch(e.target.value)
   }

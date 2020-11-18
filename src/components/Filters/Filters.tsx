@@ -1,12 +1,14 @@
 import React from 'react'
 import { Input, Menu } from 'semantic-ui-react'
 
+import { IFilters } from '../../types'
+
 const Filters = ({ 
   activeItem, 
   handleItemClick, 
   inputValue, 
   onInputChange 
-}) => (
+}: IFilters) => (
   <Menu secondary>
     <Menu.Item
       name='all'

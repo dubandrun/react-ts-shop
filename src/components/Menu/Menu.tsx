@@ -1,7 +1,14 @@
 import React from 'react'
 import { Menu, List, Button, Image, Popup, } from 'semantic-ui-react'
 
-const Cart = ({ title, id, image, removeBookFromCart }) => (
+import { IMenuCart, IMenuHeader } from '../../types'
+
+const Cart = ({ 
+  title, 
+  id, 
+  image, 
+  removeBookFromCart 
+}: IMenuCart) => (
   <List selection divided verticalAlign='middle'>
     <List.Item>
       <List.Content floated='right'>
@@ -13,7 +20,12 @@ const Cart = ({ title, id, image, removeBookFromCart }) => (
   </List>
 )
 
-const Header = ({totalPrice, totalBooks, items, removeBookFromCart}) => (
+const Header = ({
+  totalPrice, 
+  totalBooks, 
+  items, 
+  removeBookFromCart
+}: IMenuHeader) => (
   <Menu>
     <Menu.Item>
       Магазин книг
