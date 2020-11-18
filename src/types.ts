@@ -1,3 +1,4 @@
+// Redux types
 import { 
   SET_BOOKS,
   SET_IS_LOADING,
@@ -6,7 +7,6 @@ import {
   SET_FILTER,
   SET_SEARCH
 } from './constants'
-
 
 export interface IAddBook {
   id: number,
@@ -46,3 +46,76 @@ interface ISetSearch {
 export type BooksActionTypes = ISetBookAction | ISetIsLoading
 export type CartActionTypes = IAddBookToCart | IRemoveBookFromCart
 export type FilterActionTypes = ISetFilter | ISetSearch
+
+// AppContainer types
+
+export interface IBooksAndFilter {
+  books: {
+    items: Array<IAddBook>,
+    isLoading: boolean
+  },
+  filter: {
+    filteredBy: string,
+    search: string
+  }
+}
+
+export interface IMapStateToPropsAppContainer {
+  books: Array<IAddBook>,
+  isLoading: boolean
+}
+
+export interface IAppContainer {
+  setBooks: Function,
+  addBookToCart: Function, 
+  removeBookFromCart: Function,
+  isLoading: boolean,
+  books: Array<IAddBook>
+}
+// App types
+ 
+// BookCardContainer types
+export interface IMapStateToPropsBookCardContainer {
+  addedCount: number
+}
+
+export interface IBookCardState {
+  cart: {
+    items: Array<IAddBook>
+  }
+}
+// Book types
+ 
+// FiltersContainer types
+export interface IMapStateToPropsFilterContainer {
+  activeItem: string,
+  inputValue: string
+}
+
+export interface IFilter {
+  filter: {
+    filteredBy: string,
+    search: string
+  }
+}
+
+export interface IFilterContainer {
+  setFilter: Function,
+  setSearch: Function,
+  activeItem: string,
+  inputValue: string,
+}
+// Filters types
+ 
+// MenuContainer types
+export type Cart = {
+  cart: {
+    items: Array<IAddBook>
+  }
+}
+export interface IMapStateToPropsMenuContainer {
+  totalPrice: number,
+  totalBooks: number,
+  items: Array<IAddBook>,
+}
+// Menu types

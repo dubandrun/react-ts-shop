@@ -14,8 +14,8 @@ const initialState: stateItems = {
   search: '',
   filteredBy: 'all'
 }
-
-const filter = (state = initialState, action: FilterActionTypes): stateItems => {
+//добавить типы с возврата функции
+const filter = (state = initialState, action: FilterActionTypes) => {
 
   switch(action.type) {
     

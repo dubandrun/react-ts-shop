@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import orderBy from 'lodash/orderBy'
+import { orderBy } from 'lodash'
 
 import { setBooks } from '../../actions/books'
 import { addBookToCart, removeBookFromCart } from '../../actions/cart'
 
 import App from '../../App'
 
-const sortBy = (books, filteredBy) => {
+import { 
+  IAddBook, 
+  IMapStateToPropsAppContainer, 
+  IBooksAndFilter,
+  IAppContainer 
+} from '../../types'
+
+const sortBy = (books: Array<IAddBook>, filteredBy: string): Array<IAddBook> => {
   switch (filteredBy) {
     case 'popular':
       return orderBy(books, 'rating', 'desc')
@@ -22,20 +29,21 @@ const sortBy = (books, filteredBy) => {
   }
 }
 
-const filterBooks = (books, search) => 
+const filterBooks = (books: Array<IAddBook>, search: string): Array<IAddBook> => 
   books.filter(item => 
     item.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
     item.author.toLowerCase().indexOf(search.toLowerCase()) >= 0 
 )
 
-const searchBooks = (books, filteredBy, search) => {
+const searchBooks = (books: Array<IAddBook>, filteredBy: string, search: string): Array<IAddBook> => {
   return sortBy(filterBooks(books, search), filteredBy)
 }
 
-class AppContainer extends Component {
 
-  componentDidMount() {
-    const { setBooks } = this.props
+class AppContainer extends Component<IAppContainer> {
+
+  componentDidMount(): void {
+    const { setBooks } = this.props 
     fetch('/data.json')
       .then(res => res.json())
       .then(res => setBooks(res))
@@ -49,9 +57,10 @@ class AppContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ books, filter }) => {
+
+const mapStateToProps = ({ books, filter }: IBooksAndFilter): IMapStateToPropsAppContainer => {
   return {
-    books: books.items && searchBooks(books.items, filter.filteredBy, filter.search),
+    books: searchBooks(books.items, filter.filteredBy, filter.search),
     isLoading: books.isLoading
   }
 }

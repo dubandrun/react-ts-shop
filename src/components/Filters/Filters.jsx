@@ -4,7 +4,7 @@ import { Input, Menu } from 'semantic-ui-react'
 const Filters = ({ 
   activeItem, 
   handleItemClick, 
-  search, 
+  inputValue, 
   onInputChange 
 }) => (
   <Menu secondary>
@@ -30,7 +30,7 @@ const Filters = ({
     >Цена(дешевые)</Menu.Item>
     <Menu.Menu position='right'>
       <Menu.Item>
-        <Input icon='search' onChange={onInputChange} value={search} placeholder='Введите название...' />
+        <Input icon='search' onChange={onInputChange} value={inputValue} placeholder='Введите название...' />
       </Menu.Item>
     </Menu.Menu>
   </Menu>
