@@ -14,7 +14,6 @@ const initialState: stateItems = {
 }
 
 const cart = (state = initialState, action: CartActionTypes): stateItems  => {
-
   switch(action.type) {
     case ADD_BOOK_TO_CART: {
       return {

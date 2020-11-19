@@ -30,7 +30,6 @@ const Header = ({
     <Menu.Item>
       Магазин книг
     </Menu.Item>
-
     <Menu.Menu position='right'>
       <Menu.Item>
         Итого: &nbsp; <b>{totalPrice}</b> &nbsp; руб.

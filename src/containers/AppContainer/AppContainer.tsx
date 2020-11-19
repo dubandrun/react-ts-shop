@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { orderBy } from 'lodash'
 
@@ -39,24 +39,20 @@ const searchBooks = (books: Array<IAddBook>, filteredBy: string, search: string)
   return sortBy(filterBooks(books, search), filteredBy)
 }
 
+const AppContainer = ({setBooks, isLoading, books}: IAppContainer) => {
 
-class AppContainer extends Component<IAppContainer> {
+  useEffect(() => {
+    (async function load() {
+      const responce = await fetch('/data.json')
+      const body = await responce.json()
+      setBooks(body)
+    })()
+  }, [])
 
-  componentDidMount(): void {
-    const { setBooks } = this.props 
-    fetch('/data.json')
-      .then(res => res.json())
-      .then(res => setBooks(res))
-  }
-
-  render() {
-    const { books, isLoading } = this.props
-    return (
-      <App books={books} isLoading={isLoading}/>
-    )
-  }
+  return (
+    <App books={books} isLoading={isLoading}/>
+  )
 }
-
 
 const mapStateToProps = ({ books, filter }: IBooksAndFilter): IMapStateToPropsAppContainer => {
   return {

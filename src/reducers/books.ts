@@ -16,7 +16,6 @@ const initialState: stateItems = {
 }
 
 const books = (state = initialState, action: BooksActionTypes) => {
-
   switch(action.type) {
     case SET_BOOKS: {
       return {

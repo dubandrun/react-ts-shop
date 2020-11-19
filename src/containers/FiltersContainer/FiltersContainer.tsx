@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import Filters from '../../components/Filters/Filters'
 import { setFilter, setSearch } from '../../actions/filter'
@@ -9,31 +9,29 @@ import {
   IFilterContainer 
 } from '../../types'
 
-class FiltersContainer extends Component<IFilterContainer> {
+const FiltersContainer = ({
+  setFilter, 
+  setSearch, 
+  activeItem, 
+  inputValue
+}: IFilterContainer) => {
 
-  handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, { name }: any): void => {
-    const { setFilter } = this.props
+  const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, { name }: any): void => {
     setFilter(name)
   }
-
-  onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { setSearch } = this.props
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
   }
-
-  render() {
-    const { activeItem, inputValue } = this.props
-    return (
-      <Filters 
-        handleItemClick={this.handleItemClick} 
-        onInputChange={this.onInputChange}
-        activeItem={activeItem}
-        inputValue={inputValue}
-      />
-    )
-  }
+  
+  return (
+    <Filters 
+      handleItemClick={handleItemClick} 
+      onInputChange={onInputChange}
+      activeItem={activeItem}
+      inputValue={inputValue}
+    />
+  )
 }
-
 
 const mapStateToProps = ({ filter }: IFilter): IMapStateToPropsFilterContainer => ({
   activeItem: filter.filteredBy,

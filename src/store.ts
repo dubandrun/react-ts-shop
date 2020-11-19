@@ -13,7 +13,6 @@ const rootReducer = combineReducers({
   filter
 })
 
-
 const composeEnhancers = process.env.NODE_ENV !== 'production' &&
   typeof window === 'object' &&
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?

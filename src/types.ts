@@ -64,8 +64,6 @@ export interface IMapStateToPropsAppContainer {
 }
 export interface IAppContainer {
   setBooks: Function,
-  addBookToCart: Function, 
-  removeBookFromCart: Function,
   isLoading: boolean,
   books: Array<IAddBook>
 }

@@ -16,7 +16,6 @@ const initialState: stateItems = {
 }
 //добавить типы с возврата функции
 const filter = (state = initialState, action: FilterActionTypes) => {
-
   switch(action.type) {
     
     case SET_FILTER: {
