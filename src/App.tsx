@@ -7,7 +7,7 @@ import FiltersContainer from './containers/FiltersContainer/FiltersContainer'
 
 import { IApp } from './types'
 
-const App = ({ books, isLoading }: IApp) => (
+const App: React.FC<IApp> = ({ books, isLoading }) => (
   <Container >
     <MenuContainer />
     <FiltersContainer/>

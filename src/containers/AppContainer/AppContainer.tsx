@@ -39,13 +39,16 @@ const searchBooks = (books: Array<IAddBook>, filteredBy: string, search: string)
   return sortBy(filterBooks(books, search), filteredBy)
 }
 
-const AppContainer = ({setBooks, isLoading, books}: IAppContainer) => {
+const AppContainer: React.FC<IAppContainer> = ({setBooks, isLoading, books}) => {
 
   useEffect(() => {
     (async function load() {
-      const responce = await fetch('/data.json')
+      try {const responce = await fetch('/data.json')
       const body = await responce.json()
-      setBooks(body)
+      setBooks(body)}
+      catch (error) {
+        console.log(error)
+      }
     })()
   }, [])
 
