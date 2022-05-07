@@ -1,27 +1,23 @@
-import {
-  SET_BOOKS,
-  SET_IS_LOADING,
-} from '../constants'
+import { SET_BOOKS, SET_IS_LOADING } from '../../constants'
 
-import { BooksActionTypes, IAddBook } from '../types'
+import { BooksActionTypes, IBookData } from '../../types'
 
-type stateItems = {
+type StateItems = {
   isLoading: boolean,
-  items: IAddBook[]
+  items: IBookData[]
 }
 
-const initialState: stateItems = {
+const initialState: StateItems = {
   isLoading: false,
   items: [],
 }
 
-const books = (state = initialState, action: BooksActionTypes) => {
+const books = (state = initialState, action: BooksActionTypes): StateItems => {
   switch(action.type) {
     case SET_BOOKS: {
       return {
         ...state,
-        items: action.payload,
-        isLoading: true
+        items: action.payload
       }
     }
 

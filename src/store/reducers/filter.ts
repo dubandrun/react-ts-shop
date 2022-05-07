@@ -1,21 +1,19 @@
-import { 
-  SET_FILTER, 
-  SET_SEARCH 
-} from '../constants'
+import { SET_FILTER, SET_SEARCH } from '../../constants'
+import { FILTER } from '../../enums'
 
-import { FilterActionTypes } from '../types'
+import { FilterActionTypes } from '../../types'
 
-type stateItems = {
+type StateItems = {
   search: string,
   filteredBy: string
 }
 
-const initialState: stateItems = {
+const initialState: StateItems = {
   search: '',
-  filteredBy: 'all'
+  filteredBy: FILTER.ALL
 }
-//добавить типы с возврата функции
-const filter = (state = initialState, action: FilterActionTypes) => {
+
+const filter = (state = initialState, action: FilterActionTypes): StateItems => {
   switch(action.type) {
     
     case SET_FILTER: {

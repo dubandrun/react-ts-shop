@@ -1,19 +1,16 @@
-import {
-  ADD_BOOK_TO_CART,
-  REMOVE_BOOK_FROM_CART
-} from '../constants'
+import { ADD_BOOK_TO_CART, REMOVE_BOOK_FROM_CART } from '../../constants'
 
-import { CartActionTypes, IAddBook } from '../types'
+import { CartActionTypes, IAddBook } from '../../types'
 
-type stateItems = {
+type StateItems = {
   items: IAddBook[]
 }
 
-const initialState: stateItems = {
+const initialState: StateItems = {
   items: []
 }
 
-const cart = (state = initialState, action: CartActionTypes): stateItems  => {
+const cart = (state = initialState, action: CartActionTypes): StateItems  => {
   switch(action.type) {
     case ADD_BOOK_TO_CART: {
       return {

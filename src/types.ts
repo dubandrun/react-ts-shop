@@ -1,4 +1,5 @@
-// Redux types
+import { ChangeEvent, MouseEvent } from 'react';
+import { MenuItemProps } from 'semantic-ui-react';
 import { 
   SET_BOOKS,
   SET_IS_LOADING,
@@ -7,39 +8,49 @@ import {
   SET_FILTER,
   SET_SEARCH
 } from './constants'
+import { FILTER } from './enums';
 
-export interface IAddBook {
-  id: number,
-  title: string,
-  author: string,
-  image: string,
-  price: number,
-  rating: number,
-  addedCount: number,
+export interface IBookData {
+  author: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: number;
+  title: string;
+}
+
+export interface IAddBook extends IBookData {
+  addedCount: number
+  addBookToCart: (book: IAddBook) => CartActionTypes
 }
 
 interface ISetBookAction {
-  type: typeof SET_BOOKS,
-  payload: IAddBook
+  type: typeof SET_BOOKS
+  payload: IBookData[]
 }
+
 interface IAddBookToCart {
-  type: typeof ADD_BOOK_TO_CART,
+  type: typeof ADD_BOOK_TO_CART
   payload: IAddBook
 }
+
 interface ISetIsLoading {
-  type: typeof SET_IS_LOADING,
+  type: typeof SET_IS_LOADING
   payload: boolean
 }
+
 interface IRemoveBookFromCart {
-  type: typeof REMOVE_BOOK_FROM_CART,
+  type: typeof REMOVE_BOOK_FROM_CART
   payload: number
 }
+
 interface ISetFilter {
-  type: typeof SET_FILTER,
+  type: typeof SET_FILTER
   payload: string
 }
+
 interface ISetSearch {
-  type: typeof SET_SEARCH,
+  type: typeof SET_SEARCH
   payload: string
 }
 
@@ -47,102 +58,103 @@ export type BooksActionTypes = ISetBookAction | ISetIsLoading
 export type CartActionTypes = IAddBookToCart | IRemoveBookFromCart
 export type FilterActionTypes = ISetFilter | ISetSearch
 
-// AppContainer types
 export interface IBooksAndFilter {
   books: {
-    items: Array<IAddBook>,
+    items: IAddBook[]
     isLoading: boolean
-  },
+  }
   filter: {
-    filteredBy: string,
+    filteredBy: FILTER
     search: string
   }
 }
+
 export interface IMapStateToPropsAppContainer {
-  books: Array<IAddBook>,
+  books: IAddBook[]
   isLoading: boolean
 }
+
 export interface IAppContainer {
-  setBooks: Function,
-  isLoading: boolean,
-  books: Array<IAddBook>
+  setBooks: (value: IBookData[]) => void
+  setBooksLoading: (value: boolean) => void
+  isLoading: boolean
+  books: IAddBook[]
 }
 
-// App types
 export interface IApp {
-  books: Array<IAddBook>,
+  books: IAddBook[]
   isLoading: boolean
 }
 
-// BookCardContainer types
 export interface IMapStateToPropsBookCardContainer {
   addedCount: number
 }
+
 export interface IBookCardState {
   cart: {
-    items: Array<IAddBook>
+    items: IAddBook[]
   }
 }
 
-// Book types
 export interface IBookCard {
-  title: string,
-  author: string,
-  image: string,
-  price: number,
-  rating: number,
-  addBookToCart: Function,
+  title: string
+  author: string
+  image: string
+  price: number
+  rating: number
+  addBookToCart: (book: IAddBook) => CartActionTypes
   addedCount: number
 }
 
-// FiltersContainer types
 export interface IMapStateToPropsFilterContainer {
-  activeItem: string,
+  activeItem: string
   inputValue: string
 }
+
 export interface IFilter {
   filter: {
-    filteredBy: string,
+    filteredBy: FILTER
     search: string
   }
 }
+
 export interface IFilterContainer {
-  setFilter: Function,
-  setSearch: Function,
-  activeItem: string,
-  inputValue: string,
+  setFilter: (name: string) => void
+  setSearch: (value: string) => void
+  activeItem: string
+  inputValue: string
 }
 
-// Filters types
  export interface IFilters {
-  activeItem: string, 
-  inputValue: string, 
-  handleItemClick: any, 
-  onInputChange: any 
+  activeItem: string 
+  inputValue: string 
+  handleItemClick: (e: MouseEvent<HTMLAnchorElement>, data: MenuItemProps) => void
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void 
  }
 
-// MenuContainer types
+
 export type Cart = {
   cart: {
-    items: Array<IAddBook>
+    items: IAddBook[]
   }
 }
+
 export interface IMapStateToPropsMenuContainer {
-  totalPrice: number,
-  totalBooks: number,
-  items: Array<IAddBook>,
+  totalPrice: number
+  totalBooks: number
+  items: IAddBook[]
 }
 
-// Menu types
 export interface IMenuCart {
-  title: string,
-  id: number, 
-  image: string,
-  removeBookFromCart: Function 
+  title: string
+  id: number
+  image: string
+  removeBookFromCart: (value: number) => void 
 }
+
 export interface IMenuHeader {
-  totalPrice: number, 
-  totalBooks: number, 
-  items: Array<IAddBook>, 
-  removeBookFromCart:  Function
+  totalPrice: number 
+  totalBooks: number
+  items: IAddBook[]
+  removeBookFromCart:  (value: number) => void
 }

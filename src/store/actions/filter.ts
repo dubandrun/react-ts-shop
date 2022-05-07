@@ -1,9 +1,6 @@
-import { 
-  SET_FILTER,
-  SET_SEARCH 
-} from '../constants'
+import { SET_FILTER, SET_SEARCH } from '../../constants'
 
-import { FilterActionTypes } from '../types'
+import { FilterActionTypes } from '../../types'
 
 export const setFilter = (filter: string): FilterActionTypes => ({
   type: SET_FILTER,

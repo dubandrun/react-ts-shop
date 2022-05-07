@@ -20,39 +20,40 @@ const Cart = ({
   </List>
 )
 
-const Header = ({
-  totalPrice, 
-  totalBooks, 
-  items, 
-  removeBookFromCart
-}: IMenuHeader) => (
-  <Menu>
-    <Menu.Item>
-      Магазин книг
-    </Menu.Item>
-    <Menu.Menu position='right'>
+export const Header = (props: IMenuHeader) => {
+  const {
+    totalPrice, 
+    totalBooks, 
+    items, 
+    removeBookFromCart
+  } = props
+
+  return (
+    <Menu>
       <Menu.Item>
-        Итого: &nbsp; <b>{totalPrice}</b> &nbsp; руб.
+        Магазин книг
       </Menu.Item>
-      <Popup 
-        trigger={
-          <Menu.Item>
-            Корзина &nbsp; (<b>{totalBooks}</b>)
-          </Menu.Item>
-        }
-        content={items.map(book => 
-          <Cart 
-            key={book.id} 
-            {...book} 
-            removeBookFromCart={removeBookFromCart}
-          />
-        )}
-        on='click'
-        hideOnScroll
-      />
-    </Menu.Menu>
-  </Menu>
-)
-
-export default Header
-
+      <Menu.Menu position='right'>
+        <Menu.Item>
+          Итого: &nbsp; <b>{totalPrice}</b> &nbsp; руб.
+        </Menu.Item>
+        <Popup 
+          trigger={
+            <Menu.Item>
+              Корзина &nbsp; (<b>{totalBooks}</b>)
+            </Menu.Item>
+          }
+          content={items.map(book => 
+            <Cart 
+              key={book.id} 
+              {...book} 
+              removeBookFromCart={removeBookFromCart}
+            />
+          )}
+          on='click'
+          hideOnScroll
+        />
+      </Menu.Menu>
+    </Menu>
+  )
+}

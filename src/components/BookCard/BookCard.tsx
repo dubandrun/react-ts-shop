@@ -1,18 +1,21 @@
 import React from 'react'
+
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
 
-import { IBookCard } from '../../types'
+import { IAddBook } from '../../types'
 
-const BookCard = (book: IBookCard)  => {
+export const BookCard = (book: IAddBook)  => {
   const {
     title,
     author,
     image,
     price,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     rating,
     addBookToCart,
     addedCount
-  } = book 
+  } = book
+
   return (
     <Card>
       <Image src={image} wrapped ui={false} />
@@ -32,6 +35,3 @@ const BookCard = (book: IBookCard)  => {
     </Card>
   )
 }
-
-
-export default BookCard

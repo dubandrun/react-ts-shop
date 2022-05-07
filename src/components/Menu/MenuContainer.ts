@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
-import { removeBookFromCart } from '../../actions/cart'
 import uniqBy from 'lodash/uniqBy'
-import Header from '../../components/Menu/Menu'
+
+import { removeBookFromCart } from '../../store/actions/cart'
+import { Header } from './Menu'
 
 import { IMapStateToPropsMenuContainer, Cart } from '../../types'
 
@@ -11,8 +12,6 @@ const mapStateToProps = ({ cart }: Cart): IMapStateToPropsMenuContainer => ({
   items: uniqBy(cart.items, item => item.id)
 })
 
-export default connect(mapStateToProps, {
-  removeBookFromCart
-})(Header)
+const ConnectedHeader = connect(mapStateToProps, { removeBookFromCart })(Header)
 
-
+export { ConnectedHeader as MenuContainer }
