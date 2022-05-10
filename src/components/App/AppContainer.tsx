@@ -22,10 +22,10 @@ const AppContainer = (props: IAppContainer) => {
 
   const getBooks = async () => {
     try {
-      setBooksLoading(true)
+      setBooksLoading(true);
 
-      const response = await fetch('/data.json')
-      const booksData: IBookData[] = await response.json()
+      const response = await fetch('/data.json');
+      const booksData: IBookData[] = await response.json();
 
       setBooks(booksData)
 
