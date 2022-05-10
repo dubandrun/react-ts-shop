@@ -1,4 +1,4 @@
-import { SET_BOOKS, SET_IS_LOADING } from './../../constants';
+import { SET_BOOKS, SET_IS_LOADING } from '../../constants'
 import { BooksActionTypes, IBookData } from '../../types'
 
 export const setBooks = (books: IBookData[]): BooksActionTypes => ({

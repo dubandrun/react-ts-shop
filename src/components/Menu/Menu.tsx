@@ -1,17 +1,19 @@
 import React from 'react'
-import { Menu, List, Button, Image, Popup, } from 'semantic-ui-react'
+import {
+  Menu, List, Button, Image, Popup,
+} from 'semantic-ui-react'
 
 import { IMenuCart, IMenuHeader } from '../../types'
 
-const Cart = ({ 
-  title, 
-  id, 
-  image, 
-  removeBookFromCart 
+const Cart = ({
+  title,
+  id,
+  image,
+  removeBookFromCart
 }: IMenuCart) => (
-  <List selection divided verticalAlign='middle'>
+  <List selection divided verticalAlign="middle">
     <List.Item>
-      <List.Content floated='right'>
+      <List.Content floated="right">
         <Button onClick={removeBookFromCart.bind(this, id)}>Удалить</Button>
       </List.Content>
       <Image avatar src={image} />
@@ -22,9 +24,9 @@ const Cart = ({
 
 export const Header = (props: IMenuHeader) => {
   const {
-    totalPrice, 
-    totalBooks, 
-    items, 
+    totalPrice,
+    totalBooks,
+    items,
     removeBookFromCart
   } = props
 
@@ -33,24 +35,30 @@ export const Header = (props: IMenuHeader) => {
       <Menu.Item>
         Магазин книг
       </Menu.Item>
-      <Menu.Menu position='right'>
+      <Menu.Menu position="right">
         <Menu.Item>
-          Итого: &nbsp; <b>{totalPrice}</b> &nbsp; руб.
+          Итого: &nbsp;
+          {' '}
+          <b>{totalPrice}</b>
+          {' '}
+          &nbsp; руб.
         </Menu.Item>
-        <Popup 
-          trigger={
+        <Popup
+          trigger={(
             <Menu.Item>
-              Корзина &nbsp; (<b>{totalBooks}</b>)
+              Корзина &nbsp; (
+              <b>{totalBooks}</b>
+              )
             </Menu.Item>
-          }
-          content={items.map(book => 
-            <Cart 
-              key={book.id} 
-              {...book} 
+          )}
+          content={items.map((book) => (
+            <Cart
+              key={book.id}
+              {...book}
               removeBookFromCart={removeBookFromCart}
             />
-          )}
-          on='click'
+          ))}
+          on="click"
           hideOnScroll
         />
       </Menu.Menu>

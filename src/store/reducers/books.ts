@@ -13,7 +13,7 @@ const initialState: StateItems = {
 }
 
 const books = (state = initialState, action: BooksActionTypes): StateItems => {
-  switch(action.type) {
+  switch (action.type) {
     case SET_BOOKS: {
       return {
         ...state,
@@ -28,7 +28,7 @@ const books = (state = initialState, action: BooksActionTypes): StateItems => {
       }
     }
 
-    default: 
+    default:
       return state
   }
 }

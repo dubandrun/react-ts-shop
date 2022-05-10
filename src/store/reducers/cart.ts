@@ -10,22 +10,22 @@ const initialState: StateItems = {
   items: []
 }
 
-const cart = (state = initialState, action: CartActionTypes): StateItems  => {
-  switch(action.type) {
+const cart = (state = initialState, action: CartActionTypes): StateItems => {
+  switch (action.type) {
     case ADD_BOOK_TO_CART: {
       return {
         ...state,
         items: [...state.items, action.payload]
-        
+
       }
     }
     case REMOVE_BOOK_FROM_CART: {
       return {
         ...state,
-        items: state.items.filter( (book: IAddBook) => book.id !== action.payload)
+        items: state.items.filter((book: IAddBook) => book.id !== action.payload)
       }
     }
-    default: 
+    default:
       return state
   }
 }

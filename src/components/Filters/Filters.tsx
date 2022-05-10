@@ -6,9 +6,9 @@ import { IFilters } from '../../types'
 
 export const Filters = (props: IFilters) => {
   const {
-    activeItem, 
-    handleItemClick, 
-    inputValue, 
+    activeItem,
+    handleItemClick,
+    inputValue,
     onInputChange
   } = props
 
@@ -42,9 +42,9 @@ export const Filters = (props: IFilters) => {
       >
         Цена(дешевые)
       </Menu.Item>
-      <Menu position='right'>
+      <Menu position="right">
         <Menu.Item>
-          <Input icon='search' onChange={onInputChange} value={inputValue} placeholder='Введите название...' />
+          <Input icon="search" onChange={onInputChange} value={inputValue} placeholder="Введите название..." />
         </Menu.Item>
       </Menu>
     </Menu>

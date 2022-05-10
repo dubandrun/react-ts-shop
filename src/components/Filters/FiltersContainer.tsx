@@ -5,17 +5,17 @@ import { MenuItemProps } from 'semantic-ui-react'
 import { Filters } from './Filters'
 import { setFilter, setSearch } from '../../store/actions/filter'
 
-import { 
-  IMapStateToPropsFilterContainer, 
-  IFilter, 
-  IFilterContainer 
+import {
+  IMapStateToPropsFilterContainer,
+  IFilter,
+  IFilterContainer
 } from '../../types'
 
 const FiltersContainer = (props: IFilterContainer) => {
   const {
-    setFilter, 
-    setSearch, 
-    activeItem, 
+    setFilter,
+    setSearch,
+    activeItem,
     inputValue
   } = props
 
@@ -26,10 +26,10 @@ const FiltersContainer = (props: IFilterContainer) => {
   const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
   }
-  
+
   return (
-    <Filters 
-      handleItemClick={handleItemClick} 
+    <Filters
+      handleItemClick={handleItemClick}
       onInputChange={onInputChange}
       activeItem={activeItem}
       inputValue={inputValue}

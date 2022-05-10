@@ -1,6 +1,6 @@
-import { ChangeEvent, MouseEvent } from 'react';
-import { MenuItemProps } from 'semantic-ui-react';
-import { 
+import { ChangeEvent, MouseEvent } from 'react'
+import { MenuItemProps } from 'semantic-ui-react'
+import {
   SET_BOOKS,
   SET_IS_LOADING,
   ADD_BOOK_TO_CART,
@@ -8,7 +8,7 @@ import {
   SET_FILTER,
   SET_SEARCH
 } from './constants'
-import { FILTER } from './enums';
+import { FILTER } from './enums'
 
 export interface IBookData {
   author: string;
@@ -125,13 +125,12 @@ export interface IFilterContainer {
   inputValue: string
 }
 
- export interface IFilters {
-  activeItem: string 
-  inputValue: string 
+export interface IFilters {
+  activeItem: string
+  inputValue: string
   handleItemClick: (e: MouseEvent<HTMLAnchorElement>, data: MenuItemProps) => void
-  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void 
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
  }
-
 
 export type Cart = {
   cart: {
@@ -149,12 +148,12 @@ export interface IMenuCart {
   title: string
   id: number
   image: string
-  removeBookFromCart: (value: number) => void 
+  removeBookFromCart: (value: number) => void
 }
 
 export interface IMenuHeader {
-  totalPrice: number 
+  totalPrice: number
   totalBooks: number
   items: IAddBook[]
-  removeBookFromCart:  (value: number) => void
+  removeBookFromCart: (value: number) => void
 }

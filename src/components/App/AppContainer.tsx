@@ -1,24 +1,26 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { orderBy } from 'lodash'
 
 import { setBooks, setBooksLoading } from '../../store/actions/books'
 import { addBookToCart, removeBookFromCart } from '../../store/actions/cart'
 import { App } from './App'
 
-import { 
-  IAddBook, 
-  IMapStateToPropsAppContainer, 
+import {
+  IAddBook,
+  IMapStateToPropsAppContainer,
   IBooksAndFilter,
-  IAppContainer, 
+  IAppContainer,
   IBookData
 } from '../../types'
-import { FILTER } from '../../enums';
+import { FILTER } from '../../enums'
 
 const AppContainer = (props: IAppContainer) => {
-  const { setBooks, setBooksLoading, isLoading, books } = props
+  const {
+    setBooks, setBooksLoading, isLoading, books
+  } = props
 
-  const getBooks = async () => { 
+  const getBooks = async () => {
     try {
       setBooksLoading(true)
 
@@ -28,8 +30,7 @@ const AppContainer = (props: IAppContainer) => {
       setBooks(booksData)
 
       setBooksLoading(false)
-    }
-    catch (error) {
+    } catch (error) {
       setBooksLoading(false)
 
       console.log(error)
@@ -41,7 +42,7 @@ const AppContainer = (props: IAppContainer) => {
   }, [])
 
   return (
-    <App books={books} isLoading={isLoading}/>
+    <App books={books} isLoading={isLoading} />
   )
 }
 
@@ -51,21 +52,23 @@ const sortBooks = (books: IAddBook[], filteredBy: FILTER): IAddBook[] => {
     priceHigh: orderBy(books, 'price', 'desc'),
     priceLow: orderBy(books, 'price', 'asc'),
     author: orderBy(books, 'author', 'asc'),
-    all: books      
+    all: books
   }
 
   return sortedBooks[filteredBy]
 }
 
-const filterBooks = (books: IAddBook[], search: string): IAddBook[] => 
-  books.filter(item => 
-    item.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
-    item.author.toLowerCase().indexOf(search.toLowerCase()) >= 0 
-)
+const filterBooks = (
+  books: IAddBook[],
+  search: string
+): IAddBook[] => books.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) >= 0
+    || item.author.toLowerCase().indexOf(search.toLowerCase()) >= 0)
 
-const searchBooks = (books: IAddBook[], filteredBy: FILTER, search: string): IAddBook[] => {
-  return sortBooks(filterBooks(books, search), filteredBy)
-}
+const searchBooks = (
+  books: IAddBook[],
+  filteredBy: FILTER,
+  search: string
+): IAddBook[] => sortBooks(filterBooks(books, search), filteredBy)
 
 const mapStateToProps = ({ books, filter }: IBooksAndFilter): IMapStateToPropsAppContainer => (
   {

@@ -14,8 +14,7 @@ const initialState: StateItems = {
 }
 
 const filter = (state = initialState, action: FilterActionTypes): StateItems => {
-  switch(action.type) {
-    
+  switch (action.type) {
     case SET_FILTER: {
       return {
         ...state,
@@ -30,7 +29,7 @@ const filter = (state = initialState, action: FilterActionTypes): StateItems => 
       }
     }
 
-    default: 
+    default:
       return state
   }
 }

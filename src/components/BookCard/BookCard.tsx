@@ -1,16 +1,17 @@
 import React from 'react'
 
-import { Card, Image, Icon, Button } from 'semantic-ui-react'
+import {
+  Card, Image, Icon, Button
+} from 'semantic-ui-react'
 
 import { IAddBook } from '../../types'
 
-export const BookCard = (book: IAddBook)  => {
+export const BookCard = (book: IAddBook) => {
   const {
     title,
     author,
     image,
     price,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     rating,
     addBookToCart,
     addedCount
@@ -22,15 +23,17 @@ export const BookCard = (book: IAddBook)  => {
       <Card.Content>
         <Card.Header>{title}</Card.Header>
         <Card.Meta>
-          <span className='date'>{author}</span>
+          <span className="date">{author}</span>
         </Card.Meta>
       </Card.Content>
       <Card.Content extra>
-        <Icon name='rub' />
+        <Icon name="rub" />
         {price}
       </Card.Content>
       <Button onClick={addBookToCart.bind(this, book)}>
-        Добавить в корзину {addedCount > 0 && `(${addedCount})`}
+        Добавить в корзину
+        {' '}
+        {addedCount > 0 && `(${addedCount})`}
       </Button>
     </Card>
   )

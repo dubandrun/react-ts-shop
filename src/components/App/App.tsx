@@ -11,15 +11,15 @@ export const App = (props: IApp) => {
   const { books, isLoading } = props
 
   return (
-    <Container >
+    <Container>
       <MenuContainer />
-      <FiltersContainer/>
+      <FiltersContainer />
       <Card.Group itemsPerRow={4}>
         {
-          isLoading 
+          isLoading
             ? 'Загрузка...'
             : books.map((book) => (
-              <BookCardContainer key={book.id} {...book}/>
+              <BookCardContainer key={book.id} {...book} />
             ))
         }
       </Card.Group>
